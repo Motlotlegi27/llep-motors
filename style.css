@@ -1,0 +1,85 @@
+:root {
+    --llep-blue: #0091ff; [span_4](start_span)/* Bright blue from flyer[span_4](end_span) */
+    --dark: #1a1a1a;
+    --text-muted: #666;
+    --white: #ffffff;
+}
+
+.services {
+    padding: 60px 0;
+    background-color: #f4f4f4;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Service Grid Layout */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 15px;
+}
+
+/* Individual Card Styling */
+.service-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image Container - Limits the picture size */
+.service-image-box {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    overflow: hidden;
+}
+
+.service-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image to fit the box perfectly */
+}
+
+/* Text and Icon Area */
+.service-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: var(--llep-blue);
+    margin-top: -45px; /* Pulls icon up over the image */
+    background: white;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.service-info h3 {
+    margin: 15px 0 10px;
+    color: var(--dark);
+    font-size: 1.4rem;
+}
+
+.service-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
