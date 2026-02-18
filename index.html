@@ -1,53 +1,545 @@
-<section id="services" class="services">
-    <div class="container">
-        <h2 class="section-title">Our Specialist Services</h2>
-        <div class="service-grid">
-            
-            <div class="service-card">
-                <div class="service-image-box">
-                    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=500" alt="Panel Beating">
-                </div>
-                <div class="service-info">
-                    <i class="fas fa-car-burst service-icon"></i>
-                    <h3>Panel Beating</h3>
-                    [span_2](start_span)<p>Precision in Every Detail[span_2](end_span). We restore your vehicle to manufacturer specifications using expert metalworking and planishing techniques.</p>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLEP (PTY) LTD | Premium Motor Services · Maun</title>
+  <style>
+    /* ----- RESET & GLOBAL ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-            <div class="service-card">
-                <div class="service-image-box">
-                    <img src="https://images.unsplash.com/photo-1599256621730-535171e28e50?q=80&w=500" alt="Spray Painting">
-                </div>
-                <div class="service-info">
-                    <i class="fas fa-paint-roller service-icon"></i>
-                    <h3>Spray Painting</h3>
-                    [span_3](start_span)<p>Excellence in Every Service[span_3](end_span). High-quality finishes with electronic color matching to bring back that original showroom shine.</p>
-                </div>
-            </div>
+    body {
+      background-color: #0a0c0f;
+      color: #eef2f5;
+      line-height: 1.5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-            <div class="service-card">
-                <div class="service-image-box">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=500" alt="Mechanical Services">
-                </div>
-                <div class="service-info">
-                    <i class="fas fa-gears service-icon"></i>
-                    <h3>Mechanical Services</h3>
-                    <p>Comprehensive engine diagnostics, repairs, and general motor maintenance to keep you moving safely on the road.</p>
-                </div>
-            </div>
+    /* ----- CUSTOM FALLBACK (no external fonts, clean) ----- */
+    h1, h2, h3, .logo-font {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-            <div class="service-card">
-                <div class="service-image-box">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=500" alt="Fabrication">
-                </div>
-                <div class="service-info">
-                    <i class="fas fa-faucet-drip service-icon"></i>
-                    <h3>Steel & Fibre Fabrication</h3>
-                    <p>Custom welding and fabrication services. High-durability repairs and part creation using industrial-grade steel and fibre materials.</p>
-                </div>
-            </div>
+    /* ----- PAGE LOAD FADE-IN ANIMATION ----- */
+    body {
+      animation: pageFadeIn 0.8s ease-out;
+    }
+    @keyframes pageFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
 
-        </div>
+    /* ----- HERO SECTION (with zoom bg) ----- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
+                  url('https://images.pexels.com/photos/4489734/pexels-photo-4489734.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat;
+      background-attachment: fixed; /* subtle parallax */
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #002b5e20, #1a3a4a40);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      padding: 2rem;
+      animation: zoomBackground 10s infinite alternate ease-in-out; /* subtle background zoom effect via content scale? Actually background is on hero, but we can animate scale of content? Better animate background-size. */
+    }
+
+    /* background zoom effect */
+    .hero {
+      background-size: 105%;
+      animation: bgZoom 15s infinite alternate ease-in-out;
+    }
+    @keyframes bgZoom {
+      0% { background-size: 105%; }
+      100% { background-size: 115%; }
+    }
+
+    /* company name */
+    .company-name {
+      font-size: clamp(2.8rem, 12vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: white;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px #005a9c, 0 4px 20px rgba(0,0,0,0.7);
+      margin-bottom: 0.2rem;
+    }
+    .company-name span {
+      color: #00a1ff;
+      font-weight: 700;
+      display: block;
+      font-size: 0.35em;
+      letter-spacing: 6px;
+      text-shadow: 0 0 10px #0077be;
+      margin-top: -0.2rem;
+    }
+
+    /* slogan animated (fade-slide) */
+    .slogan {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-weight: 300;
+      color: #cfddee;
+      margin: 1.5rem 0 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideFadeIn 1s 0.3s forwards ease-out;
+    }
+    @keyframes slideFadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* rotating headline: Professional • Reliable • Quality Workmanship (pure CSS) */
+    .rotating-headline {
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      font-weight: 600;
+      background: linear-gradient(135deg, #c0d0e0, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 1rem;
+      height: 3.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .rotating-words {
+      display: inline-flex;
+      flex-direction: column;
+      height: 2.8rem;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+    .rotating-words span {
+      display: block;
+      padding: 0 0.5rem;
+      animation: rotateWords 8s infinite ease-in-out;
+      color: #ffb347;
+      text-shadow: 0 0 8px #ffaa33;
+      font-weight: 700;
+    }
+    @keyframes rotateWords {
+      0%, 20% { transform: translateY(0); }
+      25%, 45% { transform: translateY(-2.8rem); }
+      50%, 70% { transform: translateY(-5.6rem); }
+      75%, 95% { transform: translateY(-8.4rem); }
+      100% { transform: translateY(0); }
+    }
+
+    /* ----- NAVIGATION (simple inline) ----- */
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.8rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-left: 4px solid #00a1ff;
+      padding-left: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #00a1ff;
+      color: white;
+    }
+
+    /* ----- SECTION STYLES ----- */
+    .section {
+      padding: 5rem 5%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #00a1ff, #005a9c);
+      margin: 1rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* SERVICES CARDS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #1a1f26;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #2f3a44;
+    }
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 40px -8px #00a1ff30;
+      border-color: #00a1ff;
+    }
+    .card-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+    .card-content {
+      padding: 1.8rem 1.5rem 2rem;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .card-content p {
+      color: #b0c0d0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .card-footer {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #00a1ff;
+      font-weight: 600;
+    }
+
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      background: #151b22;
+      border-radius: 40px;
+      padding: 3rem;
+      border: 1px solid #2d3a45;
+    }
+    .contact-info {
+      color: #e0eaf2;
+    }
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .contact-detail i {
+      font-size: 1.8rem;
+      color: #00a1ff;
+      width: 40px;
+    }
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #1f2a33;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      border: 1px solid #3a4b5a;
+    }
+    .btn-call {
+      background: #005a9c;
+      border-color: #0077be;
+    }
+    .btn-wa {
+      background: #128C7E;
+      border-color: #25D366;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.2);
+      box-shadow: 0 10px 20px rgba(0,161,255,0.3);
+    }
+    .map-placeholder {
+      background: #202a33;
+      border-radius: 30px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #b0c0d0;
+      border: 1px dashed #3f5565;
+    }
+    .map-placeholder i {
+      font-size: 3rem;
+      color: #00a1ff;
+      margin-bottom: 1rem;
+    }
+
+    /* floating whatsapp */
+    .floating-wa {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #128C7E;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: 0.3s;
+      z-index: 99;
+      border: 2px solid #25D366;
+    }
+    .floating-wa:hover {
+      transform: scale(1.15) rotate(5deg);
+      background: #0f6b5c;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #0b1117;
+      text-align: center;
+      padding: 2rem;
+      color: #7f8f9f;
+      border-top: 1px solid #1f2e3a;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        gap: 1rem;
+        background: #0b1117e0;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+      .rotating-headline {
+        font-size: 1.4rem;
+        flex-wrap: wrap;
+        height: auto;
+        flex-direction: column;
+      }
+      .rotating-words {
+        height: 2.2rem;
+      }
+      @keyframes rotateWords {
+        0%, 20% { transform: translateY(0); }
+        25%, 45% { transform: translateY(-2.2rem); }
+        50%, 70% { transform: translateY(-4.4rem); }
+        75%, 95% { transform: translateY(-6.6rem); }
+        100% { transform: translateY(0); }
+      }
+    }
+
+    /* icon fallback (no external, but we can use UTF8 symbols) */
+    .icon {
+      font-size: 1.2em;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- floating whatsapp -->
+  <a href="https://wa.me/26772284935?text=Hello%20LLEP%20(PTY)%20LTD%2C%20I%20need%20motor%20services." class="floating-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span style="filter: drop-shadow(0 2px 4px black);">📞</span>
+  </a>
+
+  <!-- simple navigation -->
+  <div class="nav">
+    <div class="nav-logo">LLEP</div>
+    <div class="nav-links">
+      <a href="#home">HOME</a>
+      <a href="#services">SERVICES</a>
+      <a href="#contact">CONTACT</a>
     </div>
-</section>
+  </div>
 
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="company-name">
+        LLEP (PTY) LTD
+        <span>FOR ALL YOUR MOTOR SERVICES</span>
+      </h1>
+      <div class="slogan">Maun · Boseja · New Road</div>
+      <div class="rotating-headline">
+        <span class="icon">⚡</span>
+        <span class="rotating-words">
+          <span>Professional</span>
+          <span>Reliable</span>
+          <span>Quality</span>
+          <span>Professional</span>
+        </span>
+        <span class="icon">⚙️</span>
+      </div>
+      <div style="margin-top: 2.5rem;">
+        <a href="#services" style="background: #005a9c; padding: 0.8rem 2.5rem; border-radius: 60px; color: white; text-decoration: none; font-weight: 600; letter-spacing: 1px;">EXPLORE SERVICES</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="section" id="services">
+    <h2 class="section-title">OUR EXPERTISE</h2>
+    <div class="services-grid">
+      <!-- CARD 1: Panel Beating & Spray Painting -->
+      <div class="service-card">
+        <img class="card-image" src="https://images.pexels.com/photos/3807110/pexels-photo-3807110.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Skilled panel beater at work" loading="lazy">
+        <div class="card-content">
+          <h3>Panel Beating & Spray Painting</h3>
+          <p>Precision restoration and flawless finish. Our experts bring your car's body back to showroom condition.</p>
+          <div class="card-footer">
+            <span class="icon">🔨</span> <span>since 2012</span>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 2: Mechanical Services -->
+      <div class="service-card">
+        <img class="card-image" src="https://images.pexels.com/photos/4489732/pexels-photo-4489732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Mechanic diagnosing engine" loading="lazy">
+        <div class="card-content">
+          <h3>Mechanical Services</h3>
+          <p>Engine, transmission, suspension and diagnostics — we keep you moving safely on Botswana's roads.</p>
+          <div class="card-footer">
+            <span class="icon">🔧</span> <span>full system check</span>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 3: Steel & Fibre Fabrication -->
+      <div class="service-card">
+        <img class="card-image" src="https://images.pexels.com/photos/16062184/pexels-photo-16062184/free-photo-of-man-welding-metal-in-workshop.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Fabricator welding metal" loading="lazy">
+        <div class="card-content">
+          <h3>Steel & Fibre Fabrication</h3>
+          <p>Custom bumpers, roll bars, fibre body repairs and modifications — built to last.</p>
+          <div class="card-footer">
+            <span class="icon">⚙️</span> <span>custom designs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <h2 class="section-title">GET IN TOUCH</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Gofaone Ngoshe</h3>
+        <p style="font-size: 1.2rem; color: #aac4d9;">Owner & Lead Technician</p>
+        <div class="contact-detail">
+          <span class="icon">📍</span>
+          <span>Maun, Boseja, New Road – Botswana</span>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">📞</span>
+          <span>+267 72 284 935</span>
+        </div>
+        <div class="contact-buttons">
+          <a href="tel:+26772284935" class="btn btn-call">
+            <span class="icon">📱</span> Call Now
+          </a>
+          <a href="https://wa.me/26772284935?text=Hello%20Gofaone%2C%20I%20need%20motor%20services%20in%20Maun." class="btn btn-wa" target="_blank">
+            <span class="icon">💬</span> WhatsApp
+          </a>
+        </div>
+        <p style="margin-top: 2rem; font-style: italic; color: #80a0c0;">"Quality workmanship, every vehicle"</p>
+      </div>
+      <div class="map-placeholder">
+        <span class="icon">📍</span>
+        <h3 style="color:white; margin: 0.5rem 0;">Boseja, New Road</h3>
+        <p>Opposite Maun Automotive<br/>Open Mon–Fri 8:00–17:30</p>
+        <div style="background:#1e2b37; width:100%; height:2px; margin:2rem 0;"></div>
+        <span class="icon">🔧</span>
+        <p>Emergency support available</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 LLEP (PTY) LTD — FOR ALL YOUR MOTOR SERVICES</p>
+    <p style="margin-top:0.5rem;">Maun · Boseja · New Road · Botswana</p>
+    <p style="font-size:0.9rem; color:#5f7f9f;">⚡ professional · reliable · quality ⚡</p>
+  </footer>
+
+  <!-- smooth scroll behavior is set in body, no extra JS needed -->
+</body>
+</html>
